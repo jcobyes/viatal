@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitalLife - Your Physical Health Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-green-600 cursor-pointer" onclick="showPage('home')">💪 VitalLife</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <button onclick="showPage('home')" class="nav-link text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</button>
+                        <button onclick="showPage('exercise')" class="nav-link text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Exercise</button>
+                        <button onclick="showPage('nutrition')" class="nav-link text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Nutrition</button>
+                        <button onclick="showPage('wellness')" class="nav-link text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Wellness</button>
+                        <button onclick="showPage('tips')" class="nav-link text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Tips</button>
+                        <button onclick="showPage('calendar')" class="nav-link text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Calendar</button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-green-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button onclick="showPage('home')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600">Home</button>
+                <button onclick="showPage('exercise')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600">Exercise</button>
+                <button onclick="showPage('nutrition')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600">Nutrition</button>
+                <button onclick="showPage('wellness')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600">Wellness</button>
+                <button onclick="showPage('tips')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600">Tips</button>
+                <button onclick="showPage('calendar')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-green-600">Calendar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">Transform Your Health</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Discover the power of physical wellness with expert guidance on exercise, nutrition, and healthy living</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showPage('exercise')" class="bg-white text-green-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">Start Your Journey</button>
+                    <button onclick="showPage('tips')" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors">Get Tips</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-green-600 mb-2">150+</div>
+                        <div class="text-gray-600">Exercise Routines</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-green-600 mb-2">500+</div>
+                        <div class="text-gray-600">Healthy Recipes</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">24/7</div>
+                        <div class="text-gray-600">Wellness Support</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-4xl font-bold text-orange-600 mb-2">100K+</div>
+                        <div class="text-gray-600">Happy Users</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Navigation -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Explore Our Health Sections</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Click on any section to dive deeper into your health journey</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div onclick="showPage('exercise')" class="bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer card-hover">
+                        <div class="text-5xl mb-4">🏋️</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Exercise</h3>
+                        <p class="text-gray-600 text-sm">Strength, cardio, and flexibility training programs</p>
+                    </div>
+                    <div onclick="showPage('nutrition')" class="bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer card-hover">
+                        <div class="text-5xl mb-4">🥗</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Nutrition</h3>
+                        <p class="text-gray-600 text-sm">Balanced diet plans and nutrition guidance</p>
+                    </div>
+                    <div onclick="showPage('wellness')" class="bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer card-hover">
+                        <div class="text-5xl mb-4">🌟</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Wellness</h3>
+                        <p class="text-gray-600 text-sm">Sleep, stress management, and recovery</p>
+                    </div>
+                    <div onclick="showPage('tips')" class="bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer card-hover">
+                        <div class="text-5xl mb-4">💡</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Daily Tips</h3>
+                        <p class="text-gray-600 text-sm">Simple habits for better health</p>
+                    </div>
+                </div>
+                <div class="mt-8 flex justify-center">
+                    <div onclick="showPage('calendar')" class="bg-white rounded-xl shadow-lg p-8 text-center cursor-pointer card-hover max-w-sm">
+                        <div class="text-5xl mb-4">📅</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Goal Calendar</h3>
+                        <p class="text-gray-600 text-sm">Set and track your daily health goals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Exercise Page -->
+    <div id="exercise-page" class="page">
+        <section class="py-20 bg-gray-50 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">🏋️ Exercise & Fitness</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Build strength, improve endurance, and boost your energy with our comprehensive exercise programs</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                        <div class="text-4xl mb-4">💪</div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-900">Strength Training</h3>
+                        <p class="text-gray-600 mb-6">Build muscle mass and increase bone density with progressive resistance exercises</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Weight lifting routines</li>
+                            <li>• Bodyweight exercises</li>
+                            <li>• Progressive overload</li>
+                            <li>• Form guidance</li>
+                        </ul>
+                        <button onclick="showExerciseDetails('strength')" class="mt-6 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">Learn More</button>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                        <div class="text-4xl mb-4">🏃</div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-900">Cardio Fitness</h3>
+                        <p class="text-gray-600 mb-6">Improve heart health and endurance with varied cardiovascular exercises</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Running programs</li>
+                            <li>• HIIT workouts</li>
+                            <li>• Cycling routines</li>
+                            <li>• Swimming guides</li>
+                        </ul>
+                        <button onclick="showExerciseDetails('cardio')" class="mt-6 bg-emerald-600 text-white px-6 py-2 rounded-lg hover:bg-emerald-700 transition-colors">Learn More</button>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-8 card-hover">
+                        <div class="text-4xl mb-4">🧘</div>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-900">Flexibility & Balance</h3>
+                        <p class="text-gray-600 mb-6">Enhance mobility and prevent injuries with stretching and balance work</p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Yoga sequences</li>
+                            <li>• Dynamic stretching</li>
+                            <li>• Balance training</li>
+                            <li>• Mobility work</li>
+                        </ul>
+                        <button onclick="showExerciseDetails('flexibility')" class="mt-6 bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Nutrition Page -->
+    <div id="nutrition-page" class="page">
+        <section class="py-20 bg-white min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">🥗 Nutrition & Diet</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Fuel your body with the right nutrients for optimal health and performance</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-semibold mb-6 text-gray-900">Essential Nutrition Principles</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-green-100 p-2 rounded-full">
+                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-900">Balanced Macronutrients</h4>
+                                    <p class="text-gray-600">Optimal ratios of proteins, carbohydrates, and healthy fats</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-blue-100 p-2 rounded-full">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-900">Micronutrient Dense Foods</h4>
+                                    <p class="text-gray-600">Vitamins and minerals from whole, unprocessed sources</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-purple-100 p-2 rounded-full">
+                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-900">Proper Hydration</h4>
+                                    <p class="text-gray-600">Adequate water intake for optimal body function</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-blue-50 p-8 rounded-xl">
+                        <h4 class="text-2xl font-semibold mb-6 text-gray-900">Daily Nutrition Calculator</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
+                                <input type="number" id="weight" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="70">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Activity Level</label>
+                                <select id="activity" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option value="1.2">Sedentary</option>
+                                    <option value="1.375">Light Activity</option>
+                                    <option value="1.55" selected>Moderate Activity</option>
+                                    <option value="1.725">Very Active</option>
+                                    <option value="1.9">Extremely Active</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateNutrition()" class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition-colors">Calculate Needs</button>
+                            <div id="nutrition-results" class="mt-4 p-4 bg-white rounded-md hidden">
+                                <h5 class="font-semibold mb-2">Your Daily Needs:</h5>
+                                <div id="nutrition-output"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Wellness Page -->
+    <div id="wellness-page" class="page">
+        <section class="py-20 bg-gray-50 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">🌟 Wellness & Recovery</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Complete wellness goes beyond exercise and nutrition - discover the importance of rest and recovery</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
+                        <div class="text-4xl mb-4">😴</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Quality Sleep</h3>
+                        <p class="text-gray-600 text-sm">7-9 hours of restorative sleep for optimal recovery and performance</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
+                        <div class="text-4xl mb-4">🧠</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Stress Management</h3>
+                        <p class="text-gray-600 text-sm">Techniques to reduce stress and improve mental well-being</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
+                        <div class="text-4xl mb-4">💧</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Hydration</h3>
+                        <p class="text-gray-600 text-sm">Proper fluid intake for cellular function and energy levels</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center card-hover">
+                        <div class="text-4xl mb-4">🌱</div>
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">Mental Health</h3>
+                        <p class="text-gray-600 text-sm">Mindfulness and mental wellness practices for overall health</p>
+                    </div>
+                </div>
+                
+                <!-- Additional Wellness Content -->
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-900">Sleep Optimization</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600">•</span>
+                                <span>Maintain consistent sleep schedule</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600">•</span>
+                                <span>Create a cool, dark sleeping environment</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600">•</span>
+                                <span>Avoid caffeine 6 hours before bedtime</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-indigo-600">•</span>
+                                <span>Practice relaxation techniques</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-900">Stress Reduction</h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start space-x-3">
+                                <span class="text-green-600">•</span>
+                                <span>Practice daily meditation or mindfulness</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-green-600">•</span>
+                                <span>Regular physical activity</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-green-600">•</span>
+                                <span>Maintain social connections</span>
+                            </li>
+                            <li class="flex items-start space-x-3">
+                                <span class="text-green-600">•</span>
+                                <span>Set realistic goals and boundaries</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Calendar Page -->
+    <div id="calendar-page" class="page">
+        <section class="py-20 bg-white min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">📅 Goal Calendar</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Set daily health goals and track your progress throughout the month</p>
+                </div>
+                
+                <!-- Calendar Controls -->
+                <div class="flex justify-between items-center mb-8 bg-gray-50 p-4 rounded-lg">
+                    <button onclick="changeMonth(-1)" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        ← Previous
+                    </button>
+                    <h3 id="current-month" class="text-2xl font-semibold text-gray-900"></h3>
+                    <button onclick="changeMonth(1)" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Next →
+                    </button>
+                </div>
+
+                <!-- Calendar Grid -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="grid grid-cols-7 bg-gray-100">
+                        <div class="p-4 text-center font-semibold text-gray-700">Sun</div>
+                        <div class="p-4 text-center font-semibold text-gray-700">Mon</div>
+                        <div class="p-4 text-center font-semibold text-gray-700">Tue</div>
+                        <div class="p-4 text-center font-semibold text-gray-700">Wed</div>
+                        <div class="p-4 text-center font-semibold text-gray-700">Thu</div>
+                        <div class="p-4 text-center font-semibold text-gray-700">Fri</div>
+                        <div class="p-4 text-center font-semibold text-gray-700">Sat</div>
+                    </div>
+                    <div id="calendar-grid" class="grid grid-cols-7 border-t border-gray-200">
+                        <!-- Calendar days will be generated here -->
+                    </div>
+                </div>
+
+                <!-- Goal Setting Panel -->
+                <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl border border-green-100">
+                        <h4 class="text-2xl font-semibold mb-6 text-gray-900">Set Daily Goal</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Goal Type</label>
+                                <select id="goal-type" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                                    <option value="exercise">💪 Exercise</option>
+                                    <option value="nutrition">🥗 Nutrition</option>
+                                    <option value="water">💧 Water Intake</option>
+                                    <option value="sleep">😴 Sleep</option>
+                                    <option value="steps">🚶 Steps</option>
+                                    <option value="meditation">🧘 Meditation</option>
+                                    <option value="custom">✨ Custom Goal</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Goal Description</label>
+                                <input type="text" id="goal-description" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="e.g., 30 minutes workout, 8 glasses of water">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Selected Date</label>
+                                <input type="text" id="selected-date" class="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100" readonly>
+                            </div>
+                            <button onclick="setGoal()" class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition-colors">Set Goal</button>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-xl border border-green-100">
+                        <h4 class="text-2xl font-semibold mb-6 text-gray-900">Today's Goals</h4>
+                        <div id="today-goals" class="space-y-3">
+                            <p class="text-gray-600">No goals set for today. Click on a date to add goals!</p>
+                        </div>
+                        <div class="mt-6">
+                            <h5 class="font-semibold mb-3 text-gray-900">Quick Goal Templates</h5>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="quickGoal('💪 30min workout')" class="text-xs bg-blue-100 text-blue-700 px-3 py-2 rounded-md hover:bg-blue-200 transition-colors">30min Workout</button>
+                                <button onclick="quickGoal('💧 8 glasses water')" class="text-xs bg-cyan-100 text-cyan-700 px-3 py-2 rounded-md hover:bg-cyan-200 transition-colors">8 Glasses Water</button>
+                                <button onclick="quickGoal('🚶 10,000 steps')" class="text-xs bg-green-100 text-green-700 px-3 py-2 rounded-md hover:bg-green-200 transition-colors">10K Steps</button>
+                                <button onclick="quickGoal('😴 8 hours sleep')" class="text-xs bg-purple-100 text-purple-700 px-3 py-2 rounded-md hover:bg-purple-200 transition-colors">8hrs Sleep</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Summary -->
+                <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
+                    <h4 class="text-2xl font-semibold mb-6 text-gray-900">Monthly Progress</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div id="goals-set" class="text-3xl font-bold text-indigo-600 mb-2">0</div>
+                            <div class="text-gray-600">Goals Set</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="goals-completed" class="text-3xl font-bold text-green-600 mb-2">0</div>
+                            <div class="text-gray-600">Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="completion-rate" class="text-3xl font-bold text-purple-600 mb-2">0%</div>
+                            <div class="text-gray-600">Success Rate</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="current-streak" class="text-3xl font-bold text-orange-600 mb-2">0</div>
+                            <div class="text-gray-600">Day Streak</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Tips Page -->
+    <div id="tips-page" class="page">
+        <section class="py-20 bg-white min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">💡 Daily Health Tips</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Simple, actionable tips you can implement today for better health</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">🌅 Morning Routine</h3>
+                        <p class="text-gray-600 mb-4">Start your day with a glass of water, 5 minutes of stretching, and a nutritious breakfast</p>
+                        <div class="text-sm text-blue-600 font-medium">Impact: High Energy</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">🚶 Move Every Hour</h3>
+                        <p class="text-gray-600 mb-4">Set reminders to stand and move for 2-3 minutes every hour during work</p>
+                        <div class="text-sm text-green-600 font-medium">Impact: Better Circulation</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-100">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">🥗 Colorful Plates</h3>
+                        <p class="text-gray-600 mb-4">Aim for 5 different colored fruits and vegetables in your daily meals</p>
+                        <div class="text-sm text-purple-600 font-medium">Impact: Better Nutrition</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-100">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">💤 Sleep Hygiene</h3>
+                        <p class="text-gray-600 mb-4">Create a bedtime routine and avoid screens 1 hour before sleep</p>
+                        <div class="text-sm text-orange-600 font-medium">Impact: Better Recovery</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 border border-teal-100">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">🧘 Mindful Breathing</h3>
+                        <p class="text-gray-600 mb-4">Practice 4-7-8 breathing: inhale 4, hold 7, exhale 8 seconds</p>
+                        <div class="text-sm text-teal-600 font-medium">Impact: Reduced Stress</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl p-6 border border-yellow-100">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">☀️ Sunlight Exposure</h3>
+                        <p class="text-gray-600 mb-4">Get 10-15 minutes of natural sunlight daily for vitamin D</p>
+                        <div class="text-sm text-yellow-600 font-medium">Impact: Better Mood</div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button onclick="generateRandomTip()" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition-colors">Get Random Tip</button>
+                    <div id="random-tip" class="mt-6 p-4 bg-indigo-50 rounded-lg hidden max-w-md mx-auto">
+                        <div id="tip-content" class="text-gray-700"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">💪 VitalLife</div>
+                    <p class="text-gray-400">Your comprehensive guide to physical health and wellness</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#exercise" class="hover:text-white transition-colors">Exercise</a></li>
+                        <li><a href="#nutrition" class="hover:text-white transition-colors">Nutrition</a></li>
+                        <li><a href="#wellness" class="hover:text-white transition-colors">Wellness</a></li>
+                        <li><a href="#tips" class="hover:text-white transition-colors">Tips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Workout Plans</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Meal Plans</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Health Articles</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Stay Healthy</h4>
+                    <p class="text-gray-400 mb-4">Remember: Small consistent actions lead to big health improvements!</p>
+                    <div class="text-2xl">🌟</div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 VitalLife. Promoting health and wellness for everyone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Exercise Details -->
+    <div id="exercise-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-900"></h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modal-content" class="text-gray-600"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Page navigation system
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.add('active');
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Update active nav state
+            updateActiveNav(pageId);
+        }
+
+        function updateActiveNav(activePageId) {
+            // Remove active state from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-indigo-600', 'bg-indigo-50');
+                link.classList.add('text-gray-700');
+            });
+            
+            // Add active state to current page nav links
+            document.querySelectorAll(`[onclick="showPage('${activePageId}')"]`).forEach(link => {
+                if (link.classList.contains('nav-link')) {
+                    link.classList.remove('text-gray-700');
+                    link.classList.add('text-indigo-600');
+                }
+            });
+        }
+
+        // Exercise details modal
+        function showExerciseDetails(type) {
+            const modal = document.getElementById('exercise-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            
+            const exerciseData = {
+                strength: {
+                    title: '💪 Strength Training Details',
+                    content: `
+                        <h4 class="text-lg font-semibold mb-3">Benefits:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Increases muscle mass and bone density</li>
+                            <li>Boosts metabolism and burns calories</li>
+                            <li>Improves functional strength for daily activities</li>
+                            <li>Enhances posture and reduces injury risk</li>
+                        </ul>
+                        <h4 class="text-lg font-semibold mb-3">Sample Routine:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Squats: 3 sets of 8-12 reps</li>
+                            <li>Push-ups: 3 sets of 8-15 reps</li>
+                            <li>Deadlifts: 3 sets of 6-10 reps</li>
+                            <li>Pull-ups: 3 sets of 5-10 reps</li>
+                        </ul>
+                        <p class="text-sm text-gray-500">Always start with proper form and gradually increase weight.</p>
+                    `
+                },
+                cardio: {
+                    title: '🏃 Cardio Fitness Details',
+                    content: `
+                        <h4 class="text-lg font-semibold mb-3">Benefits:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Strengthens heart and improves circulation</li>
+                            <li>Increases lung capacity and endurance</li>
+                            <li>Burns calories and supports weight management</li>
+                            <li>Reduces risk of chronic diseases</li>
+                        </ul>
+                        <h4 class="text-lg font-semibold mb-3">Sample HIIT Workout:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Warm-up: 5 minutes light jogging</li>
+                            <li>High intensity: 30 seconds sprint</li>
+                            <li>Recovery: 90 seconds walk</li>
+                            <li>Repeat cycle 8-10 times</li>
+                            <li>Cool-down: 5 minutes walking</li>
+                        </ul>
+                        <p class="text-sm text-gray-500">Start with 2-3 sessions per week and gradually increase.</p>
+                    `
+                },
+                flexibility: {
+                    title: '🧘 Flexibility & Balance Details',
+                    content: `
+                        <h4 class="text-lg font-semibold mb-3">Benefits:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Improves range of motion and mobility</li>
+                            <li>Reduces muscle tension and stiffness</li>
+                            <li>Enhances balance and coordination</li>
+                            <li>Prevents injuries and aids recovery</li>
+                        </ul>
+                        <h4 class="text-lg font-semibold mb-3">Daily Stretching Routine:</h4>
+                        <ul class="list-disc list-inside mb-4 space-y-1">
+                            <li>Neck rolls: 5 each direction</li>
+                            <li>Shoulder shrugs: 10 repetitions</li>
+                            <li>Hip circles: 10 each direction</li>
+                            <li>Hamstring stretch: Hold 30 seconds each leg</li>
+                            <li>Cat-cow pose: 10 repetitions</li>
+                        </ul>
+                        <p class="text-sm text-gray-500">Hold stretches for 15-30 seconds and breathe deeply.</p>
+                    `
+                }
+            };
+            
+            title.textContent = exerciseData[type].title;
+            content.innerHTML = exerciseData[type].content;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('exercise-modal').classList.add('hidden');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('exercise-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Nutrition calculator
+        function calculateNutrition() {
+            const weight = parseFloat(document.getElementById('weight').value) || 70;
+            const activity = parseFloat(document.getElementById('activity').value);
+            
+            const bmr = 88.362 + (13.397 * weight) + (4.799 * 175) - (5.677 * 30); // Assuming average height and age
+            const calories = Math.round(bmr * activity);
+            const protein = Math.round(weight * 1.6); // 1.6g per kg for active individuals
+            const carbs = Math.round(calories * 0.45 / 4); // 45% of calories
+            const fats = Math.round(calories * 0.25 / 9); // 25% of calories
+            const water = Math.round(weight * 35); // 35ml per kg
+            
+            const results = document.getElementById('nutrition-results');
+            const output = document.getElementById('nutrition-output');
+            
+            output.innerHTML = `
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>Calories:</span><span class="font-semibold">${calories} kcal</span></div>
+                    <div class="flex justify-between"><span>Protein:</span><span class="font-semibold">${protein}g</span></div>
+                    <div class="flex justify-between"><span>Carbohydrates:</span><span class="font-semibold">${carbs}g</span></div>
+                    <div class="flex justify-between"><span>Fats:</span><span class="font-semibold">${fats}g</span></div>
+                    <div class="flex justify-between"><span>Water:</span><span class="font-semibold">${water}ml</span></div>
+                </div>
+            `;
+            
+            results.classList.remove('hidden');
+        }
+
+        // Random tip generator
+        const healthTips = [
+            "Take the stairs instead of the elevator whenever possible",
+            "Drink a glass of water before each meal",
+            "Do 10 push-ups during TV commercial breaks",
+            "Park farther away to get extra steps",
+            "Replace one sugary drink with water daily",
+            "Stand and stretch every 30 minutes while working",
+            "Eat your largest meal earlier in the day",
+            "Practice deep breathing for 5 minutes daily",
+            "Keep healthy snacks visible and junk food hidden",
+            "Walk while talking on the phone",
+            "Use a smaller plate to control portion sizes",
+            "Get sunlight within the first hour of waking up"
+        ];
+
+        function generateRandomTip() {
+            const randomTip = healthTips[Math.floor(Math.random() * healthTips.length)];
+            const tipElement = document.getElementById('random-tip');
+            const contentElement = document.getElementById('tip-content');
+            
+            contentElement.innerHTML = `<strong>💡 Tip:</strong> ${randomTip}`;
+            tipElement.classList.remove('hidden');
+            
+            // Add pulse animation
+            tipElement.classList.add('pulse-animation');
+            setTimeout(() => {
+                tipElement.classList.remove('pulse-animation');
+            }, 2000);
+        }
+
+        // Scroll animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.card-hover');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.card-hover');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+
+        // Calendar functionality
+        let currentDate = new Date();
+        let selectedDate = null;
+        let goals = {}; // Store goals by date key (YYYY-MM-DD)
+
+        function initializeCalendar() {
+            renderCalendar();
+            updateProgressStats();
+        }
+
+        function renderCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Update month display
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            document.getElementById('current-month').textContent = `${monthNames[month]} ${year}`;
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            
+            const calendarGrid = document.getElementById('calendar-grid');
+            calendarGrid.innerHTML = '';
+            
+            // Add empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'p-4 border-b border-r border-gray-200 bg-gray-50';
+                calendarGrid.appendChild(emptyCell);
+            }
+            
+            // Add days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+                const hasGoals = goals[dateKey] && goals[dateKey].length > 0;
+                
+                dayCell.className = `p-4 border-b border-r border-gray-200 cursor-pointer hover:bg-blue-50 transition-colors min-h-24 ${isToday ? 'bg-blue-100' : 'bg-white'}`;
+                
+                dayCell.innerHTML = `
+                    <div class="font-semibold ${isToday ? 'text-blue-600' : 'text-gray-900'}">${day}</div>
+                    ${hasGoals ? `<div class="mt-1 text-xs text-green-600">${goals[dateKey].length} goal${goals[dateKey].length > 1 ? 's' : ''}</div>` : ''}
+                    ${hasGoals ? '<div class="mt-1 flex flex-wrap gap-1">' + goals[dateKey].map(goal => `<div class="w-2 h-2 rounded-full ${goal.completed ? 'bg-green-500' : 'bg-yellow-500'}"></div>`).join('') + '</div>' : ''}
+                `;
+                
+                dayCell.addEventListener('click', () => selectDate(dateKey, day));
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+
+        function selectDate(dateKey, day) {
+            selectedDate = dateKey;
+            document.getElementById('selected-date').value = dateKey;
+            
+            // Update today's goals display
+            updateTodayGoals(dateKey);
+            
+            // Highlight selected date
+            document.querySelectorAll('#calendar-grid > div').forEach(cell => {
+                cell.classList.remove('ring-2', 'ring-indigo-500');
+            });
+            event.target.closest('div').classList.add('ring-2', 'ring-indigo-500');
+        }
+
+        function updateTodayGoals(dateKey) {
+            const todayGoalsDiv = document.getElementById('today-goals');
+            const dayGoals = goals[dateKey] || [];
+            
+            if (dayGoals.length === 0) {
+                todayGoalsDiv.innerHTML = '<p class="text-gray-600">No goals set for this date. Add some goals below!</p>';
+                return;
+            }
+            
+            todayGoalsDiv.innerHTML = dayGoals.map((goal, index) => `
+                <div class="flex items-center justify-between p-3 bg-white rounded-lg border ${goal.completed ? 'border-green-200 bg-green-50' : 'border-gray-200'}">
+                    <div class="flex items-center space-x-3">
+                        <button onclick="toggleGoal('${dateKey}', ${index})" class="w-6 h-6 rounded-full border-2 ${goal.completed ? 'bg-green-500 border-green-500' : 'border-gray-300'} flex items-center justify-center">
+                            ${goal.completed ? '<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>' : ''}
+                        </button>
+                        <span class="${goal.completed ? 'line-through text-gray-500' : 'text-gray-900'}">${goal.description}</span>
+                    </div>
+                    <button onclick="deleteGoal('${dateKey}', ${index})" class="text-red-500 hover:text-red-700 text-sm">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            renderCalendar();
+        }
+
+        function setGoal() {
+            const goalType = document.getElementById('goal-type').value;
+            const goalDescription = document.getElementById('goal-description').value.trim();
+            const dateKey = selectedDate;
+            
+            if (!dateKey) {
+                alert('Please select a date first!');
+                return;
+            }
+            
+            if (!goalDescription) {
+                alert('Please enter a goal description!');
+                return;
+            }
+            
+            if (!goals[dateKey]) {
+                goals[dateKey] = [];
+            }
+            
+            goals[dateKey].push({
+                type: goalType,
+                description: goalDescription,
+                completed: false,
+                createdAt: new Date().toISOString()
+            });
+            
+            // Clear form
+            document.getElementById('goal-description').value = '';
+            
+            // Update displays
+            renderCalendar();
+            updateTodayGoals(dateKey);
+            updateProgressStats();
+            
+            // Save to localStorage
+            localStorage.setItem('healthGoals', JSON.stringify(goals));
+        }
+
+        function quickGoal(description) {
+            if (!selectedDate) {
+                // Select today's date
+                const today = new Date();
+                const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+                selectedDate = todayKey;
+                document.getElementById('selected-date').value = todayKey;
+            }
+            
+            document.getElementById('goal-description').value = description;
+            setGoal();
+        }
+
+        function toggleGoal(dateKey, goalIndex) {
+            if (goals[dateKey] && goals[dateKey][goalIndex]) {
+                goals[dateKey][goalIndex].completed = !goals[dateKey][goalIndex].completed;
+                updateTodayGoals(dateKey);
+                renderCalendar();
+                updateProgressStats();
+                localStorage.setItem('healthGoals', JSON.stringify(goals));
+            }
+        }
+
+        function deleteGoal(dateKey, goalIndex) {
+            if (goals[dateKey] && goals[dateKey][goalIndex]) {
+                goals[dateKey].splice(goalIndex, 1);
+                if (goals[dateKey].length === 0) {
+                    delete goals[dateKey];
+                }
+                updateTodayGoals(dateKey);
+                renderCalendar();
+                updateProgressStats();
+                localStorage.setItem('healthGoals', JSON.stringify(goals));
+            }
+        }
+
+        function updateProgressStats() {
+            const currentMonth = currentDate.getMonth();
+            const currentYear = currentDate.getFullYear();
+            
+            let totalGoals = 0;
+            let completedGoals = 0;
+            let daysWithGoals = new Set();
+            let daysWithCompletedGoals = new Set();
+            
+            Object.keys(goals).forEach(dateKey => {
+                const [year, month, day] = dateKey.split('-').map(Number);
+                if (year === currentYear && month - 1 === currentMonth) {
+                    goals[dateKey].forEach(goal => {
+                        totalGoals++;
+                        daysWithGoals.add(dateKey);
+                        if (goal.completed) {
+                            completedGoals++;
+                            daysWithCompletedGoals.add(dateKey);
+                        }
+                    });
+                }
+            });
+            
+            const completionRate = totalGoals > 0 ? Math.round((completedGoals / totalGoals) * 100) : 0;
+            
+            // Calculate streak (consecutive days with completed goals)
+            let streak = 0;
+            const today = new Date();
+            let checkDate = new Date(today);
+            
+            while (true) {
+                const dateKey = `${checkDate.getFullYear()}-${String(checkDate.getMonth() + 1).padStart(2, '0')}-${String(checkDate.getDate()).padStart(2, '0')}`;
+                const dayGoals = goals[dateKey] || [];
+                const hasCompletedGoals = dayGoals.some(goal => goal.completed);
+                
+                if (hasCompletedGoals) {
+                    streak++;
+                    checkDate.setDate(checkDate.getDate() - 1);
+                } else {
+                    break;
+                }
+                
+                // Prevent infinite loop
+                if (streak > 365) break;
+            }
+            
+            document.getElementById('goals-set').textContent = totalGoals;
+            document.getElementById('goals-completed').textContent = completedGoals;
+            document.getElementById('completion-rate').textContent = completionRate + '%';
+            document.getElementById('current-streak').textContent = streak;
+        }
+
+        // Load saved goals from localStorage
+        function loadSavedGoals() {
+            const savedGoals = localStorage.getItem('healthGoals');
+            if (savedGoals) {
+                goals = JSON.parse(savedGoals);
+            }
+        }
+
+        // Initialize calendar when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedGoals();
+            initializeCalendar();
+            
+            // Select today's date by default
+            const today = new Date();
+            const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            selectedDate = todayKey;
+            document.getElementById('selected-date').value = todayKey;
+            updateTodayGoals(todayKey);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e092d52752bc51',t:'MTc1NTAwODAwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
